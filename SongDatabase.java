@@ -225,8 +225,9 @@ public class SongDatabase extends JFrame implements ActionListener
        Edit are disabled.the buttons Accept and
        Cancel are enabled.
        */
-       else if (source == jbtnEdit) {
-           isNewSong = false;
+       else if (source == jbtnEdit) 
+       {
+           isNewSong = true;
 
            jtfDescription.setEnabled(true);
            jtfArtist.setEnabled(true);
@@ -243,14 +244,25 @@ public class SongDatabase extends JFrame implements ActionListener
        /**if the user clicks the Delete button
        the selected song is deleted.
        */
-       else if (source == jbtnDelete) {
+       else if (source == jbtnDelete)
+       {
+    	   		isNewSong = false;
+    	   		
+    	   		jtfItemCode.setText("");
+    	   		jtfDescription.setText("");
+    	   		jtfArtist.setText("");
+    	   		jtfAlbum.setText("");
+    	   		jtfPrice.setText("0");
+    	   		combobox.setSelectedIndex(0);
+    	   		
+    	   
        }
        /**if the user clicks the Accept button then
-       a new song is added into the comobobox list.
+       a new song is added into the comobo box list.
        */
        else if (source == jbtnAccept) 
        {
-           if (isNewSong) 
+           if (isNewSong = true) 
            {
                currentSong = new Song(jtfItemCode.getText(), jtfDescription.getText(), jtfArtist.getText(),
                        jtfAlbum.getText(), Double.parseDouble(jtfPrice.getText()));
@@ -264,8 +276,8 @@ public class SongDatabase extends JFrame implements ActionListener
            } 
            else 
            {
-        	   		jbtnAccept.setEnabled(false);
-        	   		jbtnCancel.setEnabled(false);
+        	   		jbtnAccept.setEnabled(true);
+        	   		jbtnCancel.setEnabled(true);
 
         	   		jbtnAdd.setEnabled(true);
         	   		jbtnEdit.setEnabled(true);
@@ -275,8 +287,8 @@ public class SongDatabase extends JFrame implements ActionListener
        }
        		else if (source == jbtnCancel) 
        		{
-       			jbtnAccept.setEnabled(false);
-                jbtnCancel.setEnabled(false);
+       			jbtnAccept.setEnabled(true);
+                jbtnCancel.setEnabled(true);
 
                 jbtnAdd.setEnabled(true);
                 jbtnEdit.setEnabled(true);
@@ -335,7 +347,7 @@ public class SongDatabase extends JFrame implements ActionListener
 
        try {
 
-           Scanner infile = new Scanner(new File("joshuapeterson/Intro to Java Programming/12 Module 12/java SongDB.data"));
+           Scanner infile = new Scanner(new File("user/joshuapeterson/desktop/java SongDB.txt"));
            /**Read the contents of the file.
             * 
             */
